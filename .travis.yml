@@ -5,8 +5,7 @@ services:
 
 before_install:
   - ls
-  - cd ./client
-  - ls
+  - ls client
   - docker build -t sergious79/react-test -f ./client/Dockerfile.dev ./client
 
 script:
