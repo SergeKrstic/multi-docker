@@ -10,7 +10,7 @@ services:
 #   - docker run -e CI=true sergious79/react-test npm test
 
 after_success:
-  # - docker build -t sergious79/multi-client ./client
+  - docker build -t sergious79/multi-client ./client
   # - docker build -t sergious79/multi-nginx ./nginx
   # - docker build -t sergious79/multi-server ./server
   # - docker build -t sergious79/multi-worker ./worker
