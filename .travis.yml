@@ -4,10 +4,13 @@ services:
   - docker
 
 before_install:
+  - ls
+  - cd ./client
+  - ls
   - docker build -t sergious79/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true sergious79/react-test npm test
+  - docker run -e CI=true sergious79/react-test npm run test
 
 after_success:
   - docker build -t sergious79/multi-client ./client
