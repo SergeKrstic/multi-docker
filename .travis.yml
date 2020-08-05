@@ -1,0 +1,17 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sergious79/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run sergious79/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t sergious79/multi-client ./client
+  - docker build -t sergious79/multi-nginx ./nginx
+  - docker build -t sergious79/multi-server ./server
+  - docker build -t sergious79/multi-worker ./worker
+  # Log in to the docker CLI
+  # Take those images and push them to docker hub
